@@ -46,7 +46,7 @@ sim_ret <- fitted(sim)
 price_paths <- apply(sim_ret, 2, function(x) P0 * exp(cumsum(x)))
 
 # 8. Create Forecast Dataframe
-# Using a daily sequence from your last date in 2016
+# Using a daily sequence from the last date in 2016
 price_forecast <- data.frame(
   Date   = seq(from = last_date + 1, by = "day", length.out = h_10yrs),
   Median = apply(price_paths, 1, median),
@@ -66,4 +66,5 @@ ggplot(price_forecast, aes(Date)) +
         y = "Price (USD)",
         x = "Year") +
   theme_classic()
+
 
